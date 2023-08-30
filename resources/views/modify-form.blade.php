@@ -1,6 +1,6 @@
 @extends('layout.master')
 @section('list')
-<section>
+<section class="d-flex justify-content-center mt-5">
     <form action="{{route('updateStudentInformation',$data->id)}}" method="post"
             class="rounded-2 px-5 py-5"style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width:800px;"
             enctype="multipart/form-data">

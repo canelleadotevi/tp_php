@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\UserControlleur;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,25 +13,49 @@ use Illuminate\Support\Facades\Route;
 |
 */
 use App\Http\Controllers\ListController;
+use App\Http\Controllers\UserController;
 
-Route::get('/', [ListController::class,'index'])->name('index');
+Route::controller(ListController::class)->middleware('auth')->group(function(){
 
-Route::get('/profil-details/{id?}', [ListController::class,"show"])->name("details");
+    Route::get('/')->name('index');
 
-Route::get('/deletes/{id}',[ListController::class,'supprimer'])->name('delete');
+    Route::get('/profil-details/{id?}')->name("details");
+    
+    Route::post('/profil-details/store')->name('student'); 
 
-Route::post('/profil-details/store', [ListController::class,"store"])->name('student'); 
-
-
-
-
-Route::get('/modify/{id}',[ListController::class,'modifyForm'])->name('modify');
-
-
-Route::post('/updateStudentInformation/{id}',[ListController::class,"update"])->name('updateStudentInformation');
+});
 
 
 
+Route::controller(UserController::class)->prefix('user')->group(function(){
+    Route::get('/user_login',"login")->name('login');
 
-Route::post('/activate/{id}',[ListController::class,'lineActivate'])->name('activate');
+Route::get('/user_register',"register")->name('register');
+
+Route::post('/registerStore','registerStore')->name('registerStore');
+
+Route::post('/loginStore','loginStore')->name('loginStore');
+
+Route::get('/verify_email/{email}','verify')->name('verifyEmail');
+
+   
+});
+Route::get('/modify/{id}',[UserController::class,'modifyForm'])->name('modify');
+
+Route::get('/deletes/{id}',[UserController::class,'supprimer'])->name('delete');
+
+Route::post('/updateStudentInformation/{id}',[UserController::class,'update'])->name('updateStudentInformation');
+
+Route::post('/activate/{id}',[UserController::class,'lineActivate'])->name('activate');
+
+
+
+
+
+
+
+
+
+
+
 

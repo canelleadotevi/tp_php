@@ -1,7 +1,7 @@
-<section class="form">
-    <div class="container mt-3 mb-3 me-3 border-primary ">
+<section >
+    <div class="container mt-3 mb-3 me-3 border-primary  ">
         <form action="{{ route('student') }}" method="post"
-            class="rounded-2 px-5 py-5"style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width:800px;"
+            class ="rounded-2 px-5 py-5 text-center" style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width:800px;"
             enctype="multipart/form-data">
             
             @csrf

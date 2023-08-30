@@ -42,6 +42,12 @@ class ListController extends Controller
     {
         $data = $request->all();
 
+
+        if($data['profil']){
+            $profil=$data['profil'];
+            $path=$profil->store('avatar');
+         }
+    
         $validation = $request->validate([
             "lastname" => 'required',
             "firstname" => 'required',
@@ -54,13 +60,9 @@ class ListController extends Controller
 
         ]);
 
-
-       
-        if($data["profil"]){
-            $photo=$data["profil"];
-            $path=$photo->store('etudiant');
-        }
-
+         
+           
+        
 
 
         $save = Description::create([
@@ -114,23 +116,26 @@ class ListController extends Controller
            
         ]);
 
-        $etudiant = Description::find($id);
+        /* $etudiant = Description::find($id); */
          
-           if ($request->hasFile(('profil'))) {
-            $path = $request->file('profil')->store('etudiant');
-            $etudiant->profil=$path; 
-        } 
-        $etudiant->lastname = $data['lastname'];
-        $etudiant->firstname = $data['firstname'];
-        $etudiant->birthday = $data['birthday'];
-        $etudiant->hobbies = $data['hobbies'];
-        $etudiant->speciality = $data['speciality'];
-        $etudiant->bio = $data['bio'];
-        $etudiant->profil = $data['profil'];
+        if($data['profil']){
+            $profil=$data['profil'];
+            $path=$profil->store('avatar');
+         }
 
-        $etudiant->save();
+       
 
-        Description::where('id', $id)->update($validateData);
+       /*  $etudiant->save(); */
+
+        Description::where('id', $id)->update([
+            "lastname" => $data['lastname'],
+            "firstname" => $data['firstname'],
+            "birthday" => $data['birthday'],
+            "hobbies" => $data['hobbies'],
+            "speciality" => $data['speciality'],
+            "bio" => $data['bio'],
+            "profil" => $path,
+        ]);
         return redirect()->route('index')->with('update', 'les modifications ont été enregistrées avec succès');
     }
 
