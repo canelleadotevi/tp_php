@@ -1,68 +1,63 @@
 @extends('layout.master-register')
 @section('content')
-
-
-<section class="mt-2 px-3">
+<section>
     @if(session("success"))
-    <div class="alert alert-dismissible alert-success fade show bg-success text-center"role="alert">
+    <div class="alert alert-dismissible alert-success fade show bg-success"role="alert">
         <strong>Success</strong><br/>
         {{session('success')}}
         <button class="btn btn-close " data-bs-dismiss="alert" aria-label="close"></button>
     </div>
     @endif
-</section >
+</section>
 
-
-<section class="mt-2 px-3">
-    @if(session("error"))
-    <div class="alert alert-dismissible alert-success fade show bg-success text-center"role="alert">
+<section>
+    @if(session('messageError') )
+    <div class="alert alert-dismissible alert-warming fade show bg-success text-center
+    " role="alert">
         <strong>Success</strong><br/>
-        {{session('error')}}
-        <button class="btn btn-close " data-bs-dismiss="alert" aria-label="close"></button>
+            {{session('messageError')}}
+             
+        <button class="btn btn-close" aria-label="close" data-bs-dismiss="alert"></button>
     </div>
     @endif
-</section >
-
-
+</section>
 
 
    <div class="container " >
-   
+
         <div class="form_content">
-            <form class="form"  action="{{route('authentification')}}"
+            <form class="form"  action="{{route('reinitializeStore')}}"
         method="post" enctype="multipart/form-data"> 
         
         @csrf
-        <div >
+        <div>
             <div class="mt-3 mb-3 me-3">
                 <div class="text-center text-secondary  fw-bold fs-2 py-3">
-                    <span>Se connecter</span>
+                    <span>Réinitialisation du mot de passe</span>
                 </div>
+
                 <div class="my-2">
-                    <label for="email" class="mb-2 text-secondary fs-5">Email</label>
-                    <input type="email" name="email" class="form-control px-2 mb-2 py-1" autocomplete="off">
+                    <label for="newpassword" class="mb-2 text-secondary fs-5">Mot de passe</label>
+                    <input type="password" name="newpassword" class="form-control px-2 mb-2 py-1" autocomplete="off">
                 </div>
+
                 <div class="my-2">
-                    <label for="password" class="mb-2 text-secondary fs-5">Mot de passe</label>
-                    <input type="password" name="password" class="form-control px-5 mb-2 py-1" autocomplete="off">
+                    <label for="newpassword" class="mb-2 text-secondary fs-5"> Confirmer votre mot de passe</label>
+                    <input type="password" name="newpassword_confirmation" class="form-control px-2 mb-2 py-1" autocomplete="off">
                 </div>
+
                 <div class="d-flex justify-content-between py-3">
 
-                         <span class="mt-3"><a href="{{route('forgotPassword')}}">Mot de passe oublié ?</a></span>
 
                          <button type="submit" class=" px-3 py-2 rounded  text-white border border-primary bg-primary fs-5"
-                         >Connexion</button>
+                         >Valider</button>
                 </div>
-                <div class="d-flex justify-content-end py-3">
-    
-                    <span class="text-secondary fs-5"> Pas encore de compte ?<a class="text-primary text-decoration-none px-2 fs-5"  href="{{route('register')}}" class="text-white text-decoration-none px-2">Cliquez ici</a></span>
-    
-                </div>
+               
             </div>
         </div>
     </form>
         </div>
-   
+  
    
 
    </div>

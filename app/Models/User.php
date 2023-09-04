@@ -24,11 +24,15 @@ class User extends Authenticatable
         'email',
         'password',
         'avatar',
-        'email_verified_at',
+        'email_verified',
         'verify_at',
         
 
     ];
+
+    public function getFullnameAttribute(){
+        return $this->firstname.''.$this->lastname;
+     }
 
     /**
      * The attributes that should be hidden for serialization.

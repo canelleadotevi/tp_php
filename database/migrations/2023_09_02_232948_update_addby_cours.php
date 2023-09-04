@@ -11,13 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('studentinformation',function(Blueprint $table){
-            $table->foreignId('student_id')
-            ->nullable()
-            ->constrained('users')
-            ->onUpdate('cascade')
-            ->onDelete('cascade');
-        });
+        //
     }
 
     /**

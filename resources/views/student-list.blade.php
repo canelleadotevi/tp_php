@@ -6,38 +6,48 @@
 
 
 @section('button')
+   <div class="container " style="margin-top: 15rem">
     <section class="mt-5 mb-5 text-center px-5">
         @if (session('message'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert" >
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Message success</strong><br />
                 {{ session('message') }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
             </div>
         @endif
     </section>
+
     <section class="mt-5 mb-5 text-center px-5">
-        @if(session('update'))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Update success</strong><br/>
-                {{ session('update')}}
+        @if (session('welcomeMessage'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Message success</strong><br />
+                {{ session('welcomeMessage') }}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="close"></button>
+            </div>
+        @endif
+    </section>
+
+   {{--  <section class="mt-5 mb-5 text-center px-5">
+        @if (session('update'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Update success</strong><br />
+                {{ session('update') }}
                 <button class=" btn-close" data-bs-dismiss="alert" aria-label="close"></button>
-            
-        </div>
+
+            </div>
+        @endif
+    </section> --}}
+
+
+    <section class="mt-5 text-center mx-4">
+        @if (session('Status'))
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>Status</strong><br />
+                {{ session('Status') }}
+                <button class="btn btn-close" data-bs-dismiss="alert"aria-label="close"></button>
+            </div>
         @endif
     </section>
-    <section class="mt-5 text-center ">
-        @if(session("Status"))
-        <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Status</strong><br/>
-            {{session("Status")}}
-            <button class="btn btn-close" data-bs-dismiss="alert"aria-label="close"></button>
-        </div>
-        @endif
-    </section>
-
-
-
-@endsection
 
 
 @section('list')
@@ -65,4 +75,9 @@
 
 
 @endsection
+
+   </div>
+@endsection
+
+
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>

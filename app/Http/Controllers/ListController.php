@@ -2,17 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\Course;
+
+use App\Models\Enseignant;
 use App\Models\Description;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Symfony\Component\Console\Descriptor\Descriptor;
 
 class ListController extends Controller
 {
     public function index()
+
     {
+
+        $user = Auth::user();
+
+        $nom =$user ? $user->firstname: "";
+
+        $prenom =$user ? $user->lastname: "";
+
+        $email =$user ? $user->email:"";
+
         $studentsList = Description::all();
-        return view('student-list', compact('studentsList'));
+
+        return view('student-list', compact('studentsList','nom','prenom','email'));
+
     }
 
     public function show($id = null)
@@ -116,7 +132,7 @@ class ListController extends Controller
            
         ]);
 
-        /* $etudiant = Description::find($id); */
+        $etudiant = Description::find($id);
          
         if($data['profil']){
             $profil=$data['profil'];
@@ -152,12 +168,29 @@ class ListController extends Controller
         $etudiant->status = true;
       }
       $etudiant->save();
-
-            
-       
        
         return redirect()->route('index')->with("Status", "status changé");
         
+    }
+
+    public function management(){
+
+
+        $user=Auth::user();
+
+        $nom = $user? $user->firstname:"";
+
+        $prenom = $user? $user->lastname:"";
+        
+        $courses = Course::all();
+
+        return view('managementOfCourse',compact('courses','nom','prenom'));
+    }
+
+    public function teacher(){
+
+        $teachers = Enseignant::all();
+        return view('enseignant_list',compact('teachers'));
 
     }
 
