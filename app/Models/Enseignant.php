@@ -17,7 +17,24 @@ class Enseignant extends Model
 
     use SoftDeletes;
 
+
     public function cours(){
+
         return $this->belongsToMany(Cours::class);
+
+    }
+
+/* Pour récupérer tout les enseignants */
+    public function enseignants(){
+
+        return $this->hasMany(Cours_Enseignant::class, "enseignants_id","id");
+
+    }
+
+
+    public function affect(){
+
+        return $this->hasManyThrough(Cours::class,Cours_Studentinformation::class,"studentinformation_id",'id','id','cours_id');
+
     }
 }

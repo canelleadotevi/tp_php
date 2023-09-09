@@ -32,6 +32,7 @@ class EnseignantController extends Controller
             'phone'=> array([
                 'required',
                 'regex:/^(?=.*[0-9])/',
+                'unique',
                 
             ]),
             'address'=>'required'
@@ -95,42 +96,24 @@ class EnseignantController extends Controller
 
         $enseignants = Enseignant::where('id', $id)->delete();
         return redirect()->route('viewTeacher');
+        
     }
 
     public function affectCourse($id){
 
-        $data =Enseignant::find($id);
+         $data =Enseignant::find($id);
 
-        //$courses = Cours_Enseignant::;
-        //dd($courses);
-        $courses = Cours_Enseignant::where('enseignants_id',$id)->get();
-        //dd($courses);
-        //$affect = Cours_Enseignant::with('cours','enseignant')->get();
-
-        //dd( $courses[0]->cours_id);
-
-        //$affectCourse = $affect->groupBy(['enseignants_id']);
-       
-        $courseName =[];
-        foreach($courses as $course){
-
-            $courseId = Cours::find($course->cours_id);
-
-            array_push($courseName,$courseId);
-
-        }
-        //dd($courseName);
-
-
-      //dd($affectCourse);
-
-        $enseignant = Enseignant::all();
+        $affectation = Cours_Enseignant::where('enseignants_id',$id)->get();
 
         $cours = Cours::all();
 
-        return view('affectCourse',compact('id','enseignant','data','cours','courseName'));
+        return view('affectCourse',compact('id','data','cours','affectation'));
 
     }
+
+    
+
+   
 
    
 }

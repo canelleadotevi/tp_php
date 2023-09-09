@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="my-2">
-                    <label for="newpassword" class="mb-2 text-secondary fs-5"> Confirmer votre mot de passe</label>
+                    <label for="newpassword_confirmation" class="mb-2 text-secondary fs-5"> Confirmer votre mot de passe</label>
                     <input type="password" name="newpassword_confirmation" class="form-control px-2 mb-2 py-1" autocomplete="off">
                 </div>
 

@@ -10,12 +10,12 @@
 </head>
 <body>
     <header>
-        <nav class="bg-white d-flex justify-content-between  px-3" style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;">
+        <nav class=" d-flex justify-content-between  px-3" style="box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px ; background-color: whitesmoke;">
             <div class="" >
-                <a href="/" class="text-decoration-none fs-3 " style="font-style:italic;"><img src="{{asset('imagesProjet/ecole229.jpg')}}" alt=""></a>
+                <a href="/" class="text-decoration-none fs-3 " style="font-style:italic;"><img src="{{asset('imagesProjet/ecole229.png')}}" alt=""></a>
             </div>
             <div class="d-flex align-items-center ">
-                <a href="{{route('logout')}}" class="text-white text-decoration-none bg-dark px-2 py-1 rounded-2" style="font-style:italic;">Déconnexion</a>
+                <a href="{{route('logout')}}" class="text-white text-decoration-none px-4 py-2 rounded-2" style="font-style:italic; background-color:#0d224fee; ">LogOut</a>
             </div>
            
         </nav>

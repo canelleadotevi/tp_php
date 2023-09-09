@@ -11,17 +11,16 @@
 </section>
 
 <section>
-    @if(session('messageError') )
+    @if(session('error') )
     <div class="alert alert-dismissible alert-danger fade show bg-success text-center
     " role="alert">
         <strong>Success</strong><br/>
-            {{session('messageError')}}
+            {{session('error')}}
              
         <button class="btn btn-close" aria-label="close" data-bs-dismiss="alert"></button>
     </div>
     @endif
 </section>
-
 
    <div class="container " >
 
@@ -32,27 +31,22 @@
         @csrf
         <div>
             <div class="mt-3 mb-3 me-3">
-                <div class="text-center text-secondary  fw-bold fs-2 py-3">
+               {{--  <div class="text-center text-secondary  fw-bold fs-2 py-3">
                     <span>Veuillez entrer votre addresse mail</span>
-                </div>
+                </div> --}}
                 <div class="my-2">
+                    <label for="email">Email</label>
                     <input type="email" name="email" class="form-control px-2 mb-2 py-1" autocomplete="off">
                 </div>
-
-                <div class="d-flex justify-content-between py-3">
-
-
+                <div class="d-flex justify-content-end py-3">
                          <button type="submit" class=" px-3 py-2 rounded  text-white border border-primary bg-primary fs-5"
-                         >Connexion</button>
+                         >Valider</button>
                 </div>
                
             </div>
         </div>
     </form>
         </div>
-  
-   
-
    </div>
 
    @endsection

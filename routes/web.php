@@ -17,7 +17,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\CourseController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Cours_EnseignantController;
+use App\Http\Controllers\Cours_StudentinformationController;
 use App\Http\Controllers\EnseignantController;
+use App\Http\Controllers\MarkController;
 
 Route::controller(ListController::class)->middleware('auth')->group(function () {
 
@@ -38,6 +40,8 @@ Route::controller(ListController::class)->middleware('auth')->group(function () 
     Route::get('/management', 'management')->name('managementOfCourse');
 
     Route::get('teacher','teacher')->name('viewTeacher');
+
+    Route::get('/students/course','studentsCourse')->name('students.course');
 });
 
 
@@ -103,13 +107,30 @@ Route::controller(EnseignantController::class)->group(function(){
 
     Route::post('/affectCourseToTeacher','createAffectation')->name('affectCourseToTeacher');
 
+    
+
 
 });
 Route::controller(Cours_EnseignantController::class)->group(function(){
 
+
     Route::post('/affectCourseToTeacher','createAffectation')->name('affectCourseToTeacher');
 
-    
+    Route::get('/deleteaffect/{cours_id}/{enseignants_id}','deleteCourseAffect')->name('affectDeleteCours');
 
+
+});
+
+Route::controller(Cours_StudentinformationController::class)->group(function(){
+
+    Route::post('/courseToStudent','courseToStudent')->name('courseToStudent.add');
+
+    Route::get('/studentMark/{student}/{aff}','studentMarkStore')->name('studentMark');
+
+});
+
+Route::controller(MarkController::class)->group(function(){
+
+    Route::post('/studentmark','studentMarkStore')->name('studentmarktype');
 
 });

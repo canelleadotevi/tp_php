@@ -24,4 +24,15 @@ class Cours extends Model
     public function enseignant(){
         return $this->belongsToMany(Enseignant::class);
     }
+
+    public function studentinformation(){
+        
+        return $this->belongsToMany(Description::class);
+    }
+
+    public function note()
+    {
+  
+       return $this->hasmany(Mark::class, "cours_id", "id");
+    }
 }

@@ -1,9 +1,11 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Pagination\Paginator;
+use App\Models\Cours;
+use App\Models\Cours_Enseignant;
+use App\Models\Cours_Studentinformation;
 use App\Models\Course;
-
 use App\Models\Enseignant;
 use App\Models\Description;
 use Illuminate\Http\Request;
@@ -19,16 +21,15 @@ class ListController extends Controller
 
         $user = Auth::user();
 
-        $nom =$user ? $user->firstname: "";
+        $nom = $user ? $user->firstname : "";
 
-        $prenom =$user ? $user->lastname: "";
+        $prenom = $user ? $user->lastname : "";
 
-        $email =$user ? $user->email:"";
+        $email = $user ? $user->email : "";
 
-        $studentsList = Description::all();
+        $studentsList = Description::paginate(4);
 
-        return view('student-list', compact('studentsList','nom','prenom','email'));
-
+        return view('student-list', compact('studentsList', 'nom', 'prenom', 'email'));
     }
 
     public function show($id = null)
@@ -59,11 +60,11 @@ class ListController extends Controller
         $data = $request->all();
 
 
-        if($data['profil']){
-            $profil=$data['profil'];
-            $path=$profil->store('avatar');
-         }
-    
+        if ($data['profil']) {
+            $profil = $data['profil'];
+            $path = $profil->store('avatar');
+        }
+
         $validation = $request->validate([
             "lastname" => 'required',
             "firstname" => 'required',
@@ -72,13 +73,13 @@ class ListController extends Controller
             "speciality" => "required",
             "bio" => "required",
             "profil" => "required|mimes:jpg,jpeg,png",
-            
+
 
         ]);
 
-         
-           
-        
+
+
+
 
 
         $save = Description::create([
@@ -90,7 +91,7 @@ class ListController extends Controller
             'bio' => $data['bio'],
             'profil' => $path,
 
-            
+
         ]);
 
 
@@ -129,19 +130,19 @@ class ListController extends Controller
             "speciality" => "required",
             "bio" => "required",
             "profil" => "required|mimes:jpg,jpeg,png",
-           
+
         ]);
 
         $etudiant = Description::find($id);
-         
-        if($data['profil']){
-            $profil=$data['profil'];
-            $path=$profil->store('avatar');
-         }
 
-       
+        if ($data['profil']) {
+            $profil = $data['profil'];
+            $path = $profil->store('avatar');
+        }
 
-       /*  $etudiant->save(); */
+
+
+        /*  $etudiant->save(); */
 
         Description::where('id', $id)->update([
             "lastname" => $data['lastname'],
@@ -155,44 +156,55 @@ class ListController extends Controller
         return redirect()->route('index')->with('update', 'les modifications ont été enregistrées avec succès');
     }
 
- public function lineActivate($id)
+    public function lineActivate($id)
     {
 
-      $etudiant = Description::find($id);
+        $etudiant = Description::find($id);
 
-      if($etudiant->status){
-        $etudiant->status = false;
-      }
+        if ($etudiant->status) {
+            $etudiant->status = false;
+        } else {
+            $etudiant->status = true;
+        }
+        $etudiant->save();
+        
 
-      else{
-        $etudiant->status = true;
-      }
-      $etudiant->save();
-       
         return redirect()->route('index')->with("Status", "status changé");
-        
     }
 
-    public function management(){
+    public function management()
+    {
 
 
-        $user=Auth::user();
+        $user = Auth::user();
 
-        $nom = $user? $user->firstname:"";
+        $nom = $user ? $user->firstname : "";
 
-        $prenom = $user? $user->lastname:"";
-        
-        $courses = Course::all();
+        $prenom = $user ? $user->lastname : "";
 
-        return view('managementOfCourse',compact('courses','nom','prenom'));
+        $courses = Cours::paginate(3);
+
+
+
+        return view('managementOfCourse', compact('courses', 'nom', 'prenom'));
     }
 
-    public function teacher(){
+    public function teacher()
+    {
 
-        $teachers = Enseignant::all();
-        return view('enseignant_list',compact('teachers'));
-
+        $teachers = Enseignant::paginate(2);
+        return view('enseignant_list', compact('teachers'));
     }
 
+    public function studentsCourse()
 
+    {
+        $cours = Cours::all();
+
+        $students = Description::all();
+
+        $affect = Description::with('etudiant')->has('etudiant')->get();
+       
+        return view('studentCourse', compact('cours', 'students','affect'));
+    }
 };

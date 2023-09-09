@@ -4,19 +4,28 @@
 
 <section class="mt-2 px-3">
     @if(session("success"))
-    <div class="alert alert-dismissible alert-success fade show bg-success text-center"role="alert">
+    <div class="alert alert-dismissible alert-success fade show  text-center"role="alert">
         <strong>Success</strong><br/>
         {{session('success')}}
         <button class="btn btn-close " data-bs-dismiss="alert" aria-label="close"></button>
     </div>
     @endif
-</section >
+</section>
 
+<section class="mt-2 px-3">
+    @if(session(" passwordReset"))
+    <div class="alert alert-dismissible alert-success fade show  text-center"role="alert">
+        <strong> Success</strong><br/>
+        {{session(' passwordReset')}}
+        <button class="btn btn-close " data-bs-dismiss="alert" aria-label="close"></button>
+    </div>
+    @endif
+</section >
 
 <section class="mt-2 px-3">
     @if(session("error"))
-    <div class="alert alert-dismissible alert-success fade show bg-success text-center"role="alert">
-        <strong>Success</strong><br/>
+    <div class="alert alert-dismissible alert-danger fade show text-center"role="alert">
+        <strong>Error</strong><br/>
         {{session('error')}}
         <button class="btn btn-close " data-bs-dismiss="alert" aria-label="close"></button>
     </div>

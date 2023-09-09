@@ -18,12 +18,12 @@
 
 <section class="d-flex justify-content-center mt-5">
     <form action="{{route('categoryStore')}}" method="post"
-            class="rounded-2 px-5 py-5"style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width:800px;"
+            class="rounded-2 px-5 py-5"style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width:700px;"
             >
             @csrf
 
 
-            <div class="d-flex justify-content-center bg-secondary my-3 rounded-3 ">
+            <div class="d-flex justify-content-center my-3 rounded-3 "style="background-color:#0d224fee;">
                 <div class="d-flex gap-4  py-4 my-4 ">
                     <a href="#"> <img src="{{ asset('imagesProjet/ecole229.png') }}" alt=""
                             class="text-center bg-white rounded-2"width='100' height='50'></a>
@@ -41,7 +41,7 @@
 
             <div class="btn d-flex justify-content-end my-3">
                 <button type="submit"
-                    class="bg-secondary rounded-3 py-2 px-3 mb-3 text-white border-white">Enregistrer</button>
+                    class=" rounded-3 py-2 px-3 mb-3 text-white border-white" style="background-color:#0d224fee;">Enregistrer</button>
             </div>
 
 

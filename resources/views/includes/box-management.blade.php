@@ -1,15 +1,14 @@
 <div class="d-flex justify-content-center gap-3 mt-5">
                 <a href="{{route('addCourse')}}"
-    class="px-3 py-1 text-decoration-none text-white " style="border:1px solid white;border-radius:5px; background-color:orange;">Ajouter
+    class="px-4 py-1 text-decoration-none text-white " style="border-radius:5px;  background-color:#0d224fee;">Ajouter
     un cours</a>
 
     <a href="{{route('addCategory')}}"
-    class="px-3 py-1 text-decoration-none text-white " style="border:1px solid white;border-radius:5px; background-color:skyblue;">Ajouter
+    class="px-4 py-1 text-decoration-none text-white " style="border-radius:5px; background-color:#0d224fee;">Ajouter
     une catégorie</a>
+    
+    <a href="{{route('index')}}" class=" py-1 text-decoration-none text-white "
+        style="border-radius:5px; background-color:#0d224fee;padding:0 60px;">Retour</a>
 
-
-
-    <a href="/" class="px-2 py-1 text-decoration-none text-white bg-success"
-        style="border:1px solid white;border-radius:5px;">Attribution de cours</a>
 
 </div>

@@ -46,7 +46,7 @@
             @csrf
 
 
-            <div class="d-flex justify-content-center bg-secondary my-3 rounded-3 ">
+            <div class="d-flex justify-content-center  my-3 rounded-3 " style="background-color: #0d224fee;">
                 <div class="d-flex gap-4  py-4 my-4 ">
                     <a href="#"> <img src="{{ asset('imagesProjet/ecole229.png') }}" alt=""
                             class="text-center bg-white rounded-2"width='100' height='50'></a>
@@ -84,7 +84,7 @@
 
             <div class="btn d-flex justify-content-end my-3">
                 <button type="submit"
-                    class="bg-secondary rounded-3 py-2 px-3 mb-3 text-white border-white">Enregistrer</button>
+                    class=" rounded-3 py-2 px-3 mb-3 text-white border-white" style="background-color: #0d224fee;">Enregistrer</button>
             </div>
 
         </form>

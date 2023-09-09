@@ -7,7 +7,7 @@
 
 @section('button')
    <div class="container " style="margin-top: 15rem">
-    <section class="mt-5 mb-5 text-center px-5">
+    <section class="mt-1 mb-5 text-center px-5">
         @if (session('message'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Message success</strong><br />
@@ -17,7 +17,7 @@
         @endif
     </section>
 
-    <section class="mt-5 mb-5 text-center px-5">
+    <section class="mt-1 mb-5 text-center px-5">
         @if (session('welcomeMessage'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Message success</strong><br />
@@ -39,7 +39,7 @@
     </section> --}}
 
 
-    <section class="mt-5 text-center mx-4">
+    <section class="mt-1 text-center mx-4">
         @if (session('Status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
                 <strong>Status</strong><br />
@@ -59,13 +59,13 @@
 
 
     <table class=" mx-auto" width="80%">
-        <thead class="border-2 bg-dark text-white fs-5">
+        <thead class="border-2  text-white fs-5" style="background-color: #0d224fee;">
             <tr>
-                <th class="border px-3 py-3">Photo</th>
-                <th class="border px-3 py-3">Nom et prénoms</th>
-                <th class="border px-3 py-3">Hobbies</th>
-                <th class="border px-3 py-3">Spécialité</th>
-                <th class="border px-3 py-3">Actions</th>
+                <th class="border px-3 py-3 text-center">Photo</th>
+                <th class="border px-3 py-3 text-center">Nom et prénoms</th>
+                <th class="border px-3 py-3 text-center">Hobbies</th>
+                <th class="border px-3 py-3 text-center">Spécialité</th>
+                <th class="border px-3 py-3 text-center">Actions</th>
             </tr>
         </thead>
         <tbody class="bg-secondary-subtle">
