@@ -5,7 +5,7 @@
 
 
 <section class="d-flex justify-content-center mt-5">
-    <form action="{{route('courseUpdate',$allData->id)}}" method="post"
+    <form action="{{route('courseUpdate',$data->id)}}" method="post"
             class="rounded-2 px-5 py-5"style="box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;width:800px;"
             >
             @csrf
@@ -22,12 +22,12 @@
             <div class="d-flex justify-content-between align-items-center mt-5">
                 <div>
                     <label for="name" class="d-flex justify-content-start   pb-2 fs-4 fw-1">Nom du cours</label>
-                    <input type="text" name="name" id="" class="form-control mb-4 py-3 px-4"autocomplete="off" value="{{$allData->name}}">
+                    <input type="text" name="name" id="" class="form-control mb-4 py-3 px-4"autocomplete="off" value="{{$data->name}}">
                 </div>
 
                 <div>
                     <label for="timetable" class="d-flex justify-content-start   pb-2 fs-4 fw-1">Max horaire</label>
-                    <input type="text" name="timetable" id="" class="form-control mb-4 py-3 px-4"autocomplete="off" value="{{$allData->timetable}}">
+                    <input type="text" name="timetable" id="" class="form-control mb-4 py-3 px-4"autocomplete="off" value="{{$data->timetable}}">
                 </div>
               
             </div>
@@ -36,7 +36,7 @@
             <div class="d-flex justify-content-between align-items-center mt-5">
                 <div>
                     <label for="coef" class="d-flex justify-content-start   pb-2 fs-4 fw-1">Coefficient</label>
-                    <input type="text" name="coef" id="" class="form-control mb-4 py-3 px-4"autocomplete="off" value="{{$allData->coef}}">
+                    <input type="text" name="coef" id="" class="form-control mb-4 py-3 px-4"autocomplete="off" value="{{$data->coef}}">
                 </div>
                 <div  >
                     <label for="category" class="d-flex justify-content-start pb-2 fs-4 fw-1">Catégorie</label>
@@ -44,7 +44,7 @@
 
                         @foreach($categories as $category)
 
-                        <option @if($category->id == $allData->categories_id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
+                        <option @if($category->id == $data->categories_id) selected @endif value="{{$category->id}}">{{$category->name}}</option>
 
                         @endforeach
                         

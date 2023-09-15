@@ -83,27 +83,22 @@
                         @endforeach
                         
                     </select>
-                </div>
-
-              
+                </div> 
             </div>
-
-
             <div class="btn d-flex justify-content-end my-3">
                 <button type="submit"
                     class=" rounded-3 py-2 px-3 mb-3 text-white border-white" style="background-color:#0d224fee;">Enregistrer</button>
             </div>
-
-
-
         </form>
 </section>
-@if(isset($allData))
+@endif
+
+@if(isset($data))
 <section>
-    @include('')
+    @include('forms.formCourse')
 </section>
-@endif
+
+
 
 @endif
-
 @endsection

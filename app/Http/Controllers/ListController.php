@@ -29,7 +29,7 @@ class ListController extends Controller
 
         $studentsList = Description::paginate(4);
 
-        return view('student-list', compact('studentsList', 'nom', 'prenom', 'email'));
+        return view('students.student-list', compact('studentsList', 'nom', 'prenom', 'email'));
     }
 
     public function show($id = null)
@@ -39,19 +39,19 @@ class ListController extends Controller
 
 
         /*    $data = Description::where('id',$id)->first(); */
-        /* je cherche l'index et en ensuiite je le récupère. */
+        /* je cherche l'index et en ensuite je le récupère. */
 
         $data = Description::find($id);
         $etudiant = Description::all();
 
 
 
-        return view('profil-details', compact('id', 'etudiant', 'data'));
+        return view('students.profil-details', compact('id', 'etudiant', 'data'));
     }
 
     public function showList()
     {
-        return view('profil-details');
+        return view('students.profil-details');
     }
 
 
@@ -77,11 +77,6 @@ class ListController extends Controller
 
         ]);
 
-
-
-
-
-
         $save = Description::create([
             'lastname' => $data['lastname'],
             'firstname' => $data['firstname'],
@@ -93,7 +88,6 @@ class ListController extends Controller
 
 
         ]);
-
 
         return redirect()->route('index')->with("message", "Etudiant enregistré avec succès!");
     }
@@ -112,7 +106,7 @@ class ListController extends Controller
 
         $data = Description::find($id);
         $etudiant = Description::all();
-        return view('modify-form', compact('id', 'data', 'etudiant'));
+        return view('forms.modify-form', compact('id', 'data', 'etudiant'));
     }
 
 
@@ -139,9 +133,6 @@ class ListController extends Controller
             $profil = $data['profil'];
             $path = $profil->store('avatar');
         }
-
-
-
         /*  $etudiant->save(); */
 
         Description::where('id', $id)->update([
@@ -174,7 +165,6 @@ class ListController extends Controller
 
     public function management()
     {
-
 
         $user = Auth::user();
 

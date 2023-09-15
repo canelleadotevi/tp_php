@@ -107,13 +107,13 @@
                                     style="border-bottom: 1px solid black;border-right: 1px solid black;">
 
                                     
-                                    <div class=" text-center  gap-3 my-3"style="border-radius-top-left:5px">
+                                  {{--   <div class=" text-center  gap-3 my-3"style="border-radius-top-left:5px">
 
                                         <a href="{{ route('affectDeleteCours', ['id' => $item->id]) }}"
                                             class="px-1  text-decoration-none  "
                                             style=" "><img src="{{asset('imagesProjet/trash.png')}}" alt="" width="40" height="40"></a>
 
-                                    </div>
+                                    </div> --}}
                                   
                                     
 

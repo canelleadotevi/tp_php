@@ -2,7 +2,7 @@
 @section('content')
 <section>
     @if(session("success"))
-    <div class="alert alert-dismissible alert-success fade show bg-success"role="alert">
+    <div class="alert alert-dismissible alert-success fade show bg-success text-center"role="alert">
         <strong>Success</strong><br/>
         {{session('success')}}
         <button class="btn btn-close " data-bs-dismiss="alert" aria-label="close"></button>

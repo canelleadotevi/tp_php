@@ -39,10 +39,10 @@
     </section> --}}
 
 
-    <section class="mt-1 text-center mx-4">
+    <section class="mt-1 text-center mx-4 text-center">
         @if (session('Status'))
             <div class="alert alert-success alert-dismissible fade show" role="alert">
-                <strong>Status</strong><br />
+                <strong>Status</strong><br/>
                 {{ session('Status') }}
                 <button class="btn btn-close" data-bs-dismiss="alert"aria-label="close"></button>
             </div>

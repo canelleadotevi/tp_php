@@ -15,11 +15,11 @@ class UserController extends Controller
 {
     public function login()
     {
-        return view('login');
+        return view('users.login');
     }
     public function register()
     {
-        return view('register');
+        return view('users.register');
     }
     public function registerStore(Request $request)
     {
@@ -92,7 +92,7 @@ class UserController extends Controller
 
     public function forgotPassword()
     {
-        return view('forgotPassword');
+        return view('users.forgotPassword');
     }
 
     public function formPasswordStore(Request $request)
@@ -137,7 +137,7 @@ class UserController extends Controller
         if (!$request->hasValidSignature()) {
             abort(404);
         }
-        return view("reinitialize",compact('email'));
+        return view("users.reinitialize",compact('email'));
     }
 
     public function  reinitializeStore(Request $request)
@@ -174,8 +174,6 @@ class UserController extends Controller
             'email_verified' => true,
 
         ]);
-
-        //dd($user);
 
         if ($user) {
 

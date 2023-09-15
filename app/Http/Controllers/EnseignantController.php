@@ -17,7 +17,7 @@ class EnseignantController extends Controller
 
         $data = Enseignant::find($id);
 
-        return view('addTeacher',compact('id','data','enseignant'));
+        return view('forms.addTeacher',compact('id','data','enseignant'));
     }
 
     public function store(Request $request){
@@ -59,7 +59,7 @@ class EnseignantController extends Controller
 
         $enseignant = Enseignant::all();
 
-        return view('formTeacher', compact('id', 'data', 'enseignant'));
+        return view('forms.addTeacher', compact('id', 'data', 'enseignant'));
 
     }
 

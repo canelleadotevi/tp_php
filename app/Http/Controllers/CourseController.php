@@ -52,7 +52,7 @@ class CourseController extends Controller
 
         $categories = Category::all();
 
-        return view('addCourse',compact('categories','data','course','id'));
+        return view('forms.addCourse',compact('categories','data','course','id'));
     }
 
     public function courseStore(Request $request){
@@ -86,7 +86,7 @@ class CourseController extends Controller
 
         return redirect()->route('managementOfCourse')->with('addCourse','Nouveau cours ajouté avec succès');
         }
-
+        
         public function courseModifyForm($id){
 
             $categories =Category::all();
@@ -95,7 +95,7 @@ class CourseController extends Controller
     
             $enseignant = Cours::all();
     
-            return view('formCourse', compact('id', 'data','categories', 'enseignant'));
+            return view('forms.addCourse', compact('id', 'data','categories', 'enseignant'));
     
         }
     
@@ -131,9 +131,6 @@ class CourseController extends Controller
             $cours = Cours::where('id', $id)->delete();
             return redirect()->route('managementOfCourse');
         }
-
-
-
   
    
 }

@@ -58,14 +58,14 @@ class Cours_StudentinformationController extends Controller
 
      
         //dd($notesetu);
-
-        $allNote = Description::join('marks','marks.studentinformation_id','studentinformation.id')
+/* 
+       $allNote = Description::join('marks','marks.studentinformation_id','studentinformation.id')
         ->join('cours','cours.id','marks.cours_id')
         ->where('studentinformation.id',$studentinformation_id)
         ->where('marks.type','Devoir')
         ->select(DB::raw ('avg (marks.note) as moyenne '),'cours.name')
         ->groupBy('cours.name')->get()->toArray();
-        
+         */
         
          
         return view('mark_student',compact('student','aff','notesetu','allNote'));
